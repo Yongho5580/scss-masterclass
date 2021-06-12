@@ -1,69 +1,76 @@
-@import "_variables";
-
 * {
   box-sizing: border-box;
 }
 
-body {
-  height: 100vh;
-  background-color: $bg;
-  display: grid;
-  grid-template-columns: 1.5fr 1.9fr 1.5fr;
-  gap: 1px;
-  grid-template-rows: 1fr 5fr 1fr;
-  & > * {
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: $bg;
-    font-size: 22px;
-    text-transform: uppercase;
-  }
-  .menu {
-    grid-column-start: -2;
-  }
-  .center-image {
-    grid-column: 2 / -2;
-    grid-row: 2 / -2;
-    background-image: url("../../image.jpg");
-    background-size: cover;
-    background-position: center;
-  }
-  .number__row {
+header {
+  width: 100%;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  nav {
+    height: 100%;
+    width: 100%;
     display: grid;
-    background-color: $bg;
-    grid-template-columns: 1fr;
-    gap: 1px;
-    align-items: stretch;
-    .number {
+    grid-template-columns: 2fr 1fr;
+    font-size: 32px;
+    text-transform: lowercase;
+    ul {
+      height: 100%;
       display: flex;
-      background-color: white;
-      justify-content: center;
       align-items: center;
-      cursor: pointer;
+      padding: 0px 15px;
       &:hover {
-        background-color: $bg;
-        color: white;
-        transition: color 0.3s linear, background-color 0.3s linear;
+        background-color: gainsboro;
       }
-    }
-  }
-  .scrolling__text {
-    grid-column-start: 2;
-    white-space: nowrap;
-    overflow: hidden;
-    span {
-      animation: scrollText 5s linear infinite forwards;
+      li {
+        cursor: pointer;
+        margin-right: 50px;
+      }
+      &:first-child {
+        &:hover {
+          li:not(:first-child) {
+            color: white !important;
+          }
+        }
+        li {
+          &:first-child {
+            margin-right: 120px;
+          }
+          &:not(:first-child) {
+            color: gainsboro;
+            margin-right: 50px;
+          }
+        }
+      }
     }
   }
 }
 
-@keyframes scrollText {
-  from {
-    transform: translateX(0px);
-  }
-  to {
-    transform: translateX(800px);
+main {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 50vh;
+  article {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 10fr 0.8fr;
+    img {
+      min-width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    div {
+      display: flex;
+      align-items: center;
+      text-transform: uppercase;
+      padding-left: 10px;
+      h3 {
+        font-size: 14px;
+      }
+    }
   }
 }
