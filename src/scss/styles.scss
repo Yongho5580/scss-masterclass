@@ -10,14 +10,60 @@ body {
   display: grid;
   grid-template-columns: 1.5fr 1.9fr 1.5fr;
   gap: 1px;
-  grid-template-rows: repeat(7, 1fr);
+  grid-template-rows: 1fr 5fr 1fr;
   & > * {
     background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     color: $bg;
+    font-size: 22px;
+    text-transform: uppercase;
   }
   .menu {
+    grid-column-start: -2;
+  }
+  .center-image {
+    grid-column: 2 / -2;
+    grid-row: 2 / -2;
+    background-image: url("../../image.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+  .number__row {
+    display: grid;
+    background-color: $bg;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    align-items: stretch;
+    .number {
+      display: flex;
+      background-color: white;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      &:hover {
+        background-color: $bg;
+        color: white;
+        transition: color 0.3s linear, background-color 0.3s linear;
+      }
+    }
+  }
+  .scrolling__text {
+    grid-column-start: 2;
+    white-space: nowrap;
+    overflow: hidden;
+    span {
+      animation: scrollText 5s linear infinite forwards;
+    }
+  }
+}
+
+@keyframes scrollText {
+  from {
+    transform: translateX(0px);
+  }
+  to {
+    transform: translateX(800px);
   }
 }
