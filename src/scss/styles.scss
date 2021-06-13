@@ -1,76 +1,55 @@
+@import "_variables";
+
 * {
   box-sizing: border-box;
 }
 
-header {
+body {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  line-height: 1.5;
+}
+
+main {
+  grid-column-start: 2;
+}
+
+.hero {
+  margin-top: 300px;
   width: 100%;
-  background-color: white;
-  position: fixed;
-  top: 0;
-  height: 50px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  nav {
-    height: 100%;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
+  margin-bottom: 150px;
+  .hero__photo {
+    height: 70vh;
+    width: 70%;
+    background-image: url("https://source.unsplash.com/random/450*450");
+  }
+  h2 {
+    font-weight: 500;
     font-size: 32px;
-    text-transform: lowercase;
-    ul {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      padding: 0px 15px;
-      &:hover {
-        background-color: gainsboro;
-      }
-      li {
-        cursor: pointer;
-        margin-right: 50px;
-      }
-      &:first-child {
-        &:hover {
-          li:not(:first-child) {
-            color: white !important;
-          }
-        }
-        li {
-          &:first-child {
-            margin-right: 120px;
-          }
-          &:not(:first-child) {
-            color: gainsboro;
-            margin-right: 50px;
-          }
-        }
-      }
+    margin-top: 80px;
+    margin-bottom: 120px;
+  }
+  p {
+    font-size: $fontMedium;
+    span {
+      font-size: $fontMedium - 5px;
+      margin-right: 50px;
+      font-weight: 500;
     }
   }
 }
 
-main {
-  margin-top: 50px;
+.products {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-auto-rows: 50vh;
-  article {
-    height: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  .product {
     display: grid;
-    grid-template-rows: 10fr 0.8fr;
-    img {
-      min-width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
-    div {
-      display: flex;
-      align-items: center;
-      text-transform: uppercase;
-      padding-left: 10px;
-      h3 {
-        font-size: 14px;
-      }
+    grid-template-columns: repeat(2, 1fr);
+    &:first-child {
+      grid-column-start: span 2;
     }
   }
 }
